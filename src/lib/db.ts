@@ -43,8 +43,5 @@ export function getDb() {
   return dbInstance;
 }
 
-// Export for direct access (will throw if DATABASE_URL is not set)
-export const db = getDb();
-
 export type Database = ReturnType<typeof getDb>;
 

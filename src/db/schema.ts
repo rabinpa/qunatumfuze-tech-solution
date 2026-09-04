@@ -14,24 +14,25 @@ import {
 // Enums
 
 export const projectTypeEnum = pgEnum('project_type', [
-  'Web Development',
-  'Digital Marketing',
-  'Graphic Design',
-  'Mobile App Development',
-  'AI Automation',
-  'Software Development',
-  'Product Design',
-  'Business Solutions',
-  'IT Consulting',
-  'More than one',
+  'ai_automation',
+  'software_development',
+  'product_design',
+  'business_solutions',
+  'it_consulting',
+  'multiple',
+]);
+
+export const inquiryStatusEnum = pgEnum('inquiry_status', [
+  'new',
+  'contacted',
+  'closed',
 ]);
 
 export const budgetRangeEnum = pgEnum('budget_range', [
-  'Under $10k',
-  '$10k - $25k',
-  '$25k - $50k',
-  '$50k - $100k',
-  'Over $100k',
+  'under_5k',
+  '5k_15k',
+  '15k_50k',
+  '50k_plus',
 ]);
 
 // Inquiries (Contact Form Submissions)

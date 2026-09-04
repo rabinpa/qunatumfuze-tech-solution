@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Twitter, Linkedin, Github, Mail } from 'lucide-react';
 import { footerNavLinks, footerServiceLinks, socialLinks } from '@/config/navigation';
-import { cn } from '@/lib/cn';
+import { NewsletterForm } from '@/components/forms/NewsletterForm';
 
 const iconMap = {
   twitter: Twitter,
@@ -94,30 +94,10 @@ export function Footer() {
             >
               hello@quantumfuze.com
             </a>
-            {/* Newsletter placeholder */}
+            {/* Newsletter */}
             <div className="mt-6">
               <p className="text-neutral-white/45 text-small mb-3">Stay updated</p>
-              <form
-                onSubmit={(e) => e.preventDefault()}
-                className="flex gap-2"
-              >
-                <input
-                  type="email"
-                  placeholder="Your email"
-                  aria-label="Email for newsletter"
-                  className={cn(
-                    'flex-1 px-3 py-2 bg-navy-surface border border-white/10 rounded-sm',
-                    'text-neutral-white placeholder:text-neutral-white/40 text-small',
-                    'focus:outline-none focus:border-sky'
-                  )}
-                />
-                <button
-                  type="submit"
-                  className="px-4 py-2 bg-sky text-navy font-medium rounded-sm text-small hover:bg-sky-bright transition-colors duration-200"
-                >
-                  Join
-                </button>
-              </form>
+              <NewsletterForm />
             </div>
           </div>
         </div>
