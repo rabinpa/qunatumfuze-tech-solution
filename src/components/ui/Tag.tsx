@@ -14,7 +14,7 @@ export function Tag({ children, variant = 'default', className }: TagProps) {
     default: 'bg-neutral-lightgray text-neutral-secondary',
     sky: 'bg-sky-pale text-sky-bright',
     green: 'bg-green-soft text-green-deep',
-    navy: 'bg-navy-surface text-sky-primary',
+    navy: 'bg-navy-surface text-sky',
   };
 
   return (

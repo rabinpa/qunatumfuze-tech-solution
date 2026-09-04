@@ -13,7 +13,7 @@ const fieldStyles = [
   'w-full h-12 px-4 rounded-sm border border-neutral-border bg-neutral-white text-neutral-text text-body',
   'placeholder:text-neutral-secondary/60',
   'transition-all duration-200 ease-out',
-  'focus:outline-none focus:border-sky-primary focus:ring-2 focus:ring-sky-primary/20',
+  'focus:outline-none focus:border-sky focus:ring-2 focus:ring-sky/20',
   'disabled:opacity-50 disabled:cursor-not-allowed',
 ].join(' ');
 

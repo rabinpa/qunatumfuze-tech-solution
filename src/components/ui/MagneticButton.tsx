@@ -45,10 +45,10 @@ export function MagneticButton({ children, className, onClick }: MagneticButtonP
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       className={cn(
-        'group inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-sky-primary text-navy-primary font-medium rounded-sm',
+        'group inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-sky text-navy font-medium rounded-sm',
         'transition-all duration-200 ease-out',
         'hover:bg-sky-bright hover:shadow-card',
-        'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-primary',
+        'focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky',
         className
       )}
       style={{

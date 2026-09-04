@@ -16,9 +16,9 @@ export function GradientBackground({
   className,
 }: GradientBackgroundProps) {
   const variants = {
-    navy: 'bg-gradient-to-br from-navy-primary via-navy-surface to-navy-deep',
-    premium: 'bg-gradient-to-br from-navy-deep via-navy-primary to-sky-bright/20',
-    growth: 'bg-gradient-to-br from-sky-primary/10 via-neutral-white to-green-soft/30',
+    navy: 'bg-gradient-to-br from-navy via-navy-surface to-navy-deep',
+    premium: 'bg-gradient-to-br from-navy-deep via-navy to-sky-bright/20',
+    growth: 'bg-gradient-to-br from-sky/10 via-neutral-white to-green-soft/30',
   };
 
   return (

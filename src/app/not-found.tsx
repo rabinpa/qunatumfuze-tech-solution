@@ -7,7 +7,7 @@ export default function NotFound() {
         <p className="text-sm font-medium text-sky-bright uppercase tracking-wider">
           404
         </p>
-        <h1 className="mt-2 font-display text-h2 text-navy-primary">
+        <h1 className="mt-2 font-display text-h2 text-navy">
           Page not found
         </h1>
         <p className="mt-4 text-body text-neutral-secondary">
@@ -15,7 +15,7 @@ export default function NotFound() {
         </p>
         <Link
           href="/"
-          className="mt-8 inline-flex items-center justify-center px-6 py-3 bg-sky-primary text-navy-primary font-medium rounded-sm transition-colors duration-200 hover:bg-sky-bright focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-primary"
+          className="mt-8 inline-flex items-center justify-center px-6 py-3 bg-sky text-navy font-medium rounded-sm transition-colors duration-200 hover:bg-sky-bright focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky"
         >
           Return home
         </Link>
