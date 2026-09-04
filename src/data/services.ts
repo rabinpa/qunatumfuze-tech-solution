@@ -1,84 +1,101 @@
-import type { Service } from '@/types';
+export interface Service {
+  id: string;
+  slug: string;
+  title: string;
+  description: string;
+  icon: string;
+  capabilities: string[];
+  outcomes: string[];
+  problem: string;
+  approach: string[];
+  faqs: { question: string; answer: string }[];
+}
 
 export const services: Service[] = [
   {
-    slug: 'web-development',
-    title: 'Web Development',
-    shortDescription: 'Fast, responsive websites built to convert visitors into customers.',
-    description:
-      'We build fast, responsive websites that work. From marketing sites to full e-commerce platforms, every build is optimized for performance, accessibility, and conversion — not just looks.',
-    icon: 'Globe',
-    capabilities: [
-      'Custom responsive builds tailored to your brand and goals',
-      'E-commerce integration with secure checkout flows',
-      'Performance optimization for fast load times and strong Core Web Vitals',
-      'Ongoing maintenance, hosting support, and iteration',
+    id: 'ai-automation',
+    slug: 'ai-automation',
+    title: 'AI & Automation',
+    description: 'Intelligent automation solutions that streamline operations, reduce costs, and unlock new capabilities.',
+    icon: 'Cpu',
+    capabilities: ['Process automation', 'AI-powered decision making', 'Custom AI model development', 'Workflow optimization'],
+    outcomes: ['Reduced operational costs', 'Faster decision-making with AI insights', 'Eliminated manual repetitive tasks'],
+    problem: 'Many businesses still rely on manual processes that slow down operations, introduce errors, and prevent teams from focusing on high-value work.',
+    approach: ['Audit existing processes', 'Design custom AI solutions', 'Implement incrementally', 'Monitor and optimize'],
+    faqs: [
+      { question: 'What types of processes can you automate?', answer: 'We automate repetitive, rule-based tasks across departments.' },
+      { question: 'Do I need existing data to use AI?', answer: 'While having historical data helps, it is not always required.' },
+      { question: 'How long does it take to implement automation?', answer: 'Simple automations can be deployed in 2-4 weeks.' },
+      { question: 'Is AI secure for my business data?', answer: 'Yes. We implement enterprise-grade security measures.' },
     ],
-    outcomes: [
-      'A website that loads in under two seconds on mobile',
-      'Clear conversion paths that turn visitors into leads or sales',
-      'A maintainable codebase your team can build on',
-    ],
-    caseStudySlug: 'elevate-ecommerce',
   },
   {
-    slug: 'digital-marketing',
-    title: 'Digital Marketing',
-    shortDescription: 'SEO, paid campaigns, and content that drives measurable growth.',
-    description:
-      'We run marketing campaigns that convert. SEO that ranks, paid ads that deliver ROI, and content that builds trust — all tied to measurable business outcomes, not vanity metrics.',
-    icon: 'TrendingUp',
-    capabilities: [
-      'Search engine optimization for sustainable organic growth',
-      'Paid media campaigns (Google, Meta) with clear ROI tracking',
-      'Content strategy and creation that builds authority',
-      'Analytics setup and monthly performance reporting',
+    id: 'software-development',
+    slug: 'software-development',
+    title: 'Software Development',
+    description: 'Custom software solutions built to solve your unique business challenges and scale with your growth.',
+    icon: 'Code2',
+    capabilities: ['Custom web applications', 'Enterprise software', 'API development', 'Legacy system modernization'],
+    outcomes: ['Scalable software architecture', 'Seamless integrations', 'Faster time-to-market'],
+    problem: 'Off-the-shelf software often forces businesses to adapt their processes to the tool, rather than the other way around.',
+    approach: ['Discovery phase', 'Scalable architecture design', 'Iterative development', 'Ongoing support'],
+    faqs: [
+      { question: 'What tech stack do you use?', answer: 'We choose technologies based on your project requirements.' },
+      { question: 'Do you handle hosting and maintenance?', answer: 'Yes. We offer full lifecycle support.' },
+      { question: 'Can you integrate with my existing systems?', answer: 'Absolutely. We specialize in integrations.' },
+      { question: 'How do you ensure software quality?', answer: 'We use automated testing and code reviews.' },
     ],
-    outcomes: [
-      'Consistent month-over-month growth in qualified traffic',
-      'Lower cost per acquisition through optimized campaigns',
-      'Clear reporting that shows exactly where leads come from',
-    ],
-    caseStudySlug: 'bloom-skincare',
   },
   {
-    slug: 'graphic-design',
-    title: 'Graphic Designing',
-    shortDescription: 'Visual identity and design assets that make your brand memorable.',
-    description:
-      'We design visuals people remember. From complete brand identities to marketing collateral, every asset is crafted to communicate clearly and stand out in a crowded market.',
+    id: 'product-design',
+    slug: 'product-design',
+    title: 'Product Design',
+    description: 'Human-centered design that transforms complex problems into intuitive, beautiful digital products.',
     icon: 'Palette',
-    capabilities: [
-      'Logo and visual identity systems',
-      'Marketing collateral — social graphics, presentations, print',
-      'Brand guidelines for consistent application across teams',
-      'UI/UX design for web and mobile products',
-    ],
-    outcomes: [
-      'A cohesive visual identity across every customer touchpoint',
-      'Design assets your team can use without a designer on speed-dial',
-      'A brand that looks as good as the product behind it',
+    capabilities: ['UX/UI design', 'User research', 'Prototyping', 'Design systems'],
+    outcomes: ['Higher user satisfaction', 'Increased conversion rates', 'Consistent brand experience'],
+    problem: 'Many digital products fail not because of technology, but because of poor design.',
+    approach: ['User research', 'Wireframes and prototypes', 'High-fidelity designs', 'Design systems'],
+    faqs: [
+      { question: 'How involved will I be in the design process?', answer: 'Very involved. We believe in close collaboration.' },
+      { question: 'What deliverables do you provide?', answer: 'Wireframes, prototypes, designs, and design systems.' },
+      { question: 'Do you do user testing?', answer: 'Yes. We conduct usability testing with real users.' },
+      { question: 'Can you design for both web and mobile?', answer: 'Absolutely. We design responsive experiences.' },
     ],
   },
   {
-    slug: 'mobile-app-development',
-    title: 'Mobile App Development',
-    shortDescription: 'Launch-ready iOS and Android apps without hiring in-house.',
-    description:
-      'We ship mobile apps that people actually use. From concept to App Store, we handle design, development, and launch — so you get a polished product without the overhead of an in-house team.',
-    icon: 'Smartphone',
-    capabilities: [
-      'Cross-platform iOS and Android development',
-      'User onboarding and engagement flow design',
-      'App Store and Google Play submission and optimization',
-      'Post-launch iteration based on real user data',
+    id: 'business-solutions',
+    slug: 'business-solutions',
+    title: 'Business Solutions',
+    description: 'Strategic technology solutions that align with your business goals and drive measurable growth.',
+    icon: 'Briefcase',
+    capabilities: ['Digital transformation', 'Business process optimization', 'Technology strategy', 'Change management'],
+    outcomes: ['Improved operational efficiency', 'Clear technology roadmap', 'Competitive advantage'],
+    problem: 'Technology should drive business growth, but many organizations struggle to connect technology investments with real business outcomes.',
+    approach: ['Align with business objectives', 'Assess current state', 'Create phased roadmap', 'Measure business metrics'],
+    faqs: [
+      { question: 'What does digital transformation actually mean?', answer: 'Integration of digital technology into all areas of your business.' },
+      { question: 'How do you measure business impact?', answer: 'We define success metrics at the start of every engagement.' },
+      { question: 'How long does a transformation project take?', answer: 'Quick wins in 3-6 months, full transformation over 12-24 months.' },
+      { question: 'Do you provide training for my team?', answer: 'Yes. We provide training and knowledge transfer.' },
     ],
-    outcomes: [
-      'A launch-ready app in the App Store and Google Play',
-      'Smooth onboarding that drives user retention',
-      'A product roadmap informed by real usage data',
+  },
+  {
+    id: 'it-consulting',
+    slug: 'it-consulting',
+    title: 'IT Consulting',
+    description: 'Expert guidance on technology strategy, infrastructure, and implementation to ensure your success.',
+    icon: 'Users',
+    capabilities: ['Technology assessment', 'IT strategy development', 'Vendor selection', 'Implementation oversight'],
+    outcomes: ['Optimized technology stack', 'Reduced risk', 'Better ROI on technology investments'],
+    problem: 'Making the right technology decisions is critical but complex. Without expert guidance, organizations risk investing in the wrong solutions.',
+    approach: ['Comprehensive assessment', 'Strategic roadmap', 'Vendor evaluation', 'Implementation oversight'],
+    faqs: [
+      { question: 'Do you work with existing vendors?', answer: 'Yes. We can work with your current vendors or help you find new ones.' },
+      { question: 'How do you assess our technology needs?', answer: 'We evaluate your current technology against your business goals.' },
+      { question: 'What is your approach to risk management?', answer: 'We identify risks early and develop mitigation strategies.' },
+      { question: 'Do you help with implementation or just strategy?', answer: 'Both. We provide full lifecycle support.' },
     ],
-    caseStudySlug: 'pulsefit',
   },
 ];
 

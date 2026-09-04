@@ -44,7 +44,7 @@ export function SolutionsSection() {
                         <h3 className="text-xl font-semibold text-navy mb-2 group-hover:text-sky-bright transition-colors">
                           {service.title}
                         </h3>
-                        <p className="text-neutral-secondary">{service.shortDescription}</p>
+                        <p className="text-neutral-secondary">{service.description}</p>
                         <div className="mt-4 text-sky-bright font-medium inline-flex items-center gap-1 group-hover:gap-2 transition-all">
                           Learn more
                           <span className="inline-block transition-transform group-hover:translate-x-1">-&gt;</span>
