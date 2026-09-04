@@ -35,7 +35,7 @@ export function FeaturedWork() {
                   <div className="aspect-video bg-gradient-to-br from-sky-pale to-sky-soft relative overflow-hidden">
                     <div className="absolute inset-0 bg-gradient-to-tr from-sky/10 to-transparent" />
                     <div className="absolute bottom-2 right-2">
-                      <Badge variant="sky">{project.serviceCategory}</Badge>
+                      <Badge variant="sky">{project.category}</Badge>
                     </div>
                   </div>
 

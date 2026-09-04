@@ -1,18 +1,27 @@
 import { Container } from '@/components/ui/Container';
-import { SectionHeading } from '@/components/ui/SectionHeading';
+import { WorkHero } from '@/components/work/WorkHero';
+import { ProjectCard } from '@/components/work/ProjectCard';
+import { projects } from '@/data/projects';
 
 export const metadata = {
   title: 'Our Work',
-  description: 'Explore our portfolio of projects and case studies.',
+  description: "See how we've helped businesses transform their digital presence and achieve real results.",
 };
 
 export default function WorkPage() {
   return (
-    <Container className="py-24">
-      <SectionHeading
-        title="Our Work"
-        subtitle="A selection of projects that showcase our approach and capabilities."
-      />
-    </Container>
+    <main>
+      <WorkHero />
+
+      <section className="py-16 bg-neutral-white">
+        <Container>
+          <div className="grid md:grid-cols-2 gap-8">
+            {projects.map((project, index) => (
+              <ProjectCard key={project.id} project={project} index={index} />
+            ))}
+          </div>
+        </Container>
+      </section>
+    </main>
   );
 }
