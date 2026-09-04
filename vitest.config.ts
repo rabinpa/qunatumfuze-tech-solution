@@ -1,13 +1,12 @@
-/// <reference types="vitest/config" />
-
 import { defineConfig } from 'vitest/config';
 import path from 'path';
 
 export default defineConfig({
   test: {
     globals: true,
-    environment: 'node',
+    environment: 'jsdom',
     include: ['src/**/*.{test,spec}.?(c|m)[jt]s?(x)'],
+    setupFiles: ['./src/test/setup.ts'],
   },
   resolve: {
     alias: {

@@ -8,18 +8,18 @@ export default {
     extend: {
       colors: {
         navy: {
-          primary: '#071A33',
+          DEFAULT: '#071A33',
           deep: '#04111F',
           surface: '#0B2445',
         },
         sky: {
-          primary: '#38BDF8',
+          DEFAULT: '#38BDF8',
           bright: '#0EA5E9',
           soft: '#E0F2FE',
           pale: '#F0F9FF',
         },
         green: {
-          primary: '#22C55E',
+          DEFAULT: '#22C55E',
           deep: '#16A34A',
           soft: '#DCFCE7',
         },
@@ -28,23 +28,24 @@ export default {
           offwhite: '#F8FAFC',
           lightgray: '#F1F5F9',
           border: '#E2E8F0',
-          text: '#0F172A',
+          DEFAULT: '#0F172A',
           secondary: '#475569',
           dark: '#020617',
         },
       },
       fontFamily: {
-        sans: ['var(--font-inter)', 'system-ui', 'sans-serif'],
-        display: ['var(--font-fraunces)', 'Georgia', 'serif'],
+        sans: ['var(--font-geist-sans)', 'system-ui', 'sans-serif'],
+        display: ['var(--font-geist-sans)', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-geist-mono)', 'monospace'],
       },
       fontSize: {
         display: ['clamp(3rem, 6vw, 5.5rem)', { lineHeight: '1.05', letterSpacing: '-0.02em' }],
-        h1: ['clamp(2.5rem, 4.5vw, 4.25rem)', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
-        h2: ['clamp(1.875rem, 3.5vw, 3.25rem)', { lineHeight: '1.15', letterSpacing: '-0.01em' }],
-        h3: ['clamp(1.25rem, 2vw, 2rem)', { lineHeight: '1.25', letterSpacing: '-0.01em' }],
-        body: ['1.0625rem', { lineHeight: '1.6' }],
+        h1: ['clamp(2.5rem, 5vw, 4.25rem)', { lineHeight: '1.1', letterSpacing: '-0.02em' }],
+        h2: ['clamp(2rem, 3.5vw, 3.25rem)', { lineHeight: '1.15', letterSpacing: '-0.01em' }],
+        h3: ['clamp(1.5rem, 2vw, 2rem)', { lineHeight: '1.25', letterSpacing: '-0.01em' }],
+        body: ['clamp(1rem, 1.1vw, 1.1875rem)', { lineHeight: '1.6' }],
         'body-lg': ['1.125rem', { lineHeight: '1.6' }],
-        small: ['0.875rem', { lineHeight: '1.5' }],
+        small: ['clamp(0.875rem, 0.9vw, 1rem)', { lineHeight: '1.5' }],
       },
       spacing: {
         '4.5': '1.125rem',
@@ -68,10 +69,18 @@ export default {
       transitionTimingFunction: {
         'out-soft': 'cubic-bezier(0.22, 1, 0.36, 1)',
       },
+      backgroundImage: {
+        'gradient-primary': 'linear-gradient(135deg, #071A33, #0EA5E9)',
+        'gradient-growth': 'linear-gradient(135deg, #38BDF8, #22C55E)',
+        'gradient-premium': 'linear-gradient(135deg, #04111F, #071A33, #0EA5E9)',
+      },
       animation: {
         'fade-in': 'fade-in 0.5s ease-out',
         'slide-up': 'slide-up 0.5s ease-out',
         breathe: 'breathe 4s ease-in-out infinite',
+        'gradient-reveal': 'gradientReveal 0.4s ease-out forwards',
+        float: 'float 6s ease-in-out infinite',
+        'glow-pulse': 'glowPulse 3s ease-in-out infinite',
       },
       keyframes: {
         'fade-in': {
@@ -85,6 +94,18 @@ export default {
         breathe: {
           '0%, 100%': { transform: 'scale(1)' },
           '50%': { transform: 'scale(1.05)' },
+        },
+        gradientReveal: {
+          '0%': { opacity: '0', transform: 'scaleX(0)' },
+          '100%': { opacity: '1', transform: 'scaleX(1)' },
+        },
+        float: {
+          '0%, 100%': { transform: 'translateY(0px)' },
+          '50%': { transform: 'translateY(-10px)' },
+        },
+        glowPulse: {
+          '0%, 100%': { opacity: '0.6', filter: 'blur(20px)' },
+          '50%': { opacity: '1', filter: 'blur(30px)' },
         },
       },
     },

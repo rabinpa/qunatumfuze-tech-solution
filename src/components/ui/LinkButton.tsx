@@ -1,13 +1,12 @@
-'use client';
-
-import { forwardRef, type ButtonHTMLAttributes, type ReactNode } from 'react';
-import { ArrowRight, Loader2, type LucideIcon } from 'lucide-react';
+import { forwardRef, type AnchorHTMLAttributes, type ReactNode } from 'react';
+import Link from 'next/link';
+import { ArrowRight, type LucideIcon } from 'lucide-react';
 import { cn } from '@/lib/cn';
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+interface LinkButtonProps extends Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href'> {
+  href: string;
   variant?: 'primary' | 'secondary' | 'ghost' | 'outline';
   size?: 'sm' | 'md' | 'lg';
-  loading?: boolean;
   iconLeft?: LucideIcon;
   iconRight?: LucideIcon;
   showArrow?: boolean;
@@ -15,27 +14,26 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 /**
- * Primary UI component for user interaction.
- * Features: multiple variants, sizes, loading state, icon support, magnetic hover effect.
+ * Link component styled as a button.
+ * Uses Next.js Link for client-side navigation.
  */
-const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+const LinkButton = forwardRef<HTMLAnchorElement, LinkButtonProps>(
   (
     {
+      href,
       variant = 'primary',
       size = 'md',
-      loading = false,
       iconLeft: IconLeft,
       iconRight: IconRight,
       showArrow = false,
       className,
       children,
-      disabled,
       ...props
     },
     ref
   ) => {
     const baseStyles =
-      'inline-flex items-center justify-center font-medium rounded-sm transition-all duration-200 ease-out-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky disabled:opacity-50 disabled:cursor-not-allowed';
+      'inline-flex items-center justify-center font-medium rounded-sm transition-all duration-200 ease-out-soft focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky';
 
     const variants = {
       primary:
@@ -55,27 +53,26 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     };
 
     return (
-      <button
+      <Link
         ref={ref}
+        href={href}
         className={cn(baseStyles, variants[variant], sizes[size], className)}
-        disabled={disabled || loading}
         {...props}
       >
-        {loading && <Loader2 className="w-4 h-4 animate-spin" />}
-        {!loading && IconLeft && <IconLeft className="w-4 h-4" />}
+        {IconLeft && <IconLeft className="w-4 h-4" />}
         <span>{children}</span>
-        {!loading && IconRight && <IconRight className="w-4 h-4" />}
-        {!loading && showArrow && (
+        {IconRight && <IconRight className="w-4 h-4" />}
+        {showArrow && (
           <ArrowRight
             className="w-4 h-4 transition-transform duration-200 ease-out group-hover:translate-x-1"
             strokeWidth={2}
           />
         )}
-      </button>
+      </Link>
     );
   }
 );
 
-Button.displayName = 'Button';
+LinkButton.displayName = 'LinkButton';
 
-export { Button };
+export { LinkButton };

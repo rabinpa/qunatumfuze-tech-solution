@@ -1,4 +1,4 @@
-import { inter, fraunces } from '@/lib/fonts';
+import { geistSans, geistMono } from '@/lib/fonts';
 
-export { inter, fraunces };
+export { geistSans, geistMono };
 

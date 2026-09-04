@@ -1,22 +1,22 @@
 import type { Metadata } from 'next';
-import { inter, fraunces } from '@/lib/fonts';
+import { geistSans, geistMono } from '@/lib/fonts';
 import '@/styles/globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://quantumfuze.com'),
   title: {
-    default: 'QuantumFuze Tech Solutions | Your growth partner for everything digital',
+    default: 'QuantumFuze Tech Solutions | Technology that moves ideas forward',
     template: '%s | QuantumFuze Tech Solutions',
   },
   description:
-    'QuantumFuze builds websites, runs marketing campaigns that convert, designs visuals people remember, and ships mobile apps — all under one roof.',
+    'QuantumFuze builds intelligent digital solutions that help organizations operate better, move faster, and create measurable impact.',
   keywords: [
-    'web development company',
-    'digital marketing agency',
-    'graphic design services',
-    'mobile app development',
-    'small business website',
-    'brand identity design',
+    'technology solutions',
+    'AI automation',
+    'software development',
+    'product design',
+    'business solutions',
+    'IT consulting',
   ],
   authors: [{ name: 'QuantumFuze Tech Solutions' }],
   creator: 'QuantumFuze Tech Solutions',
@@ -24,15 +24,15 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     siteName: 'QuantumFuze Tech Solutions',
-    title: 'QuantumFuze Tech Solutions | Your growth partner for everything digital',
+    title: 'QuantumFuze Tech Solutions | Technology that moves ideas forward',
     description:
-      'QuantumFuze builds websites, runs marketing campaigns that convert, designs visuals people remember, and ships mobile apps — all under one roof.',
+      'QuantumFuze builds intelligent digital solutions that help organizations operate better, move faster, and create measurable impact.',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'QuantumFuze Tech Solutions',
     description:
-      'QuantumFuze builds websites, runs marketing campaigns that convert, designs visuals people remember, and ships mobile apps — all under one roof.',
+      'QuantumFuze builds intelligent digital solutions that help organizations operate better, move faster, and create measurable impact.',
   },
   robots: {
     index: true,
@@ -50,7 +50,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} ${fraunces.variable}`}>
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
       <body className="min-h-screen antialiased">{children}</body>
     </html>
   );

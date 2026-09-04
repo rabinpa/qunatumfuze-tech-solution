@@ -5,29 +5,53 @@
 @layer base {
   :root {
     /* Primary Navy */
-    --navy-primary: #071A33;
-    --navy-deep: #04111F;
-    --navy-surface: #0B2445;
+    --color-navy: #071A33;
+    --color-navy-deep: #04111F;
+    --color-navy-surface: #0B2445;
 
     /* Primary Sky */
-    --sky-primary: #38BDF8;
-    --sky-bright: #0EA5E9;
-    --sky-soft: #E0F2FE;
-    --sky-pale: #F0F9FF;
+    --color-sky: #38BDF8;
+    --color-sky-bright: #0EA5E9;
+    --color-sky-soft: #E0F2FE;
+    --color-sky-pale: #F0F9FF;
 
     /* Primary Green */
-    --green-primary: #22C55E;
-    --green-deep: #16A34A;
-    --green-soft: #DCFCE7;
+    --color-green: #22C55E;
+    --color-green-deep: #16A34A;
+    --color-green-soft: #DCFCE7;
 
     /* Neutrals */
-    --neutral-white: #FFFFFF;
-    --neutral-offwhite: #F8FAFC;
-    --neutral-lightgray: #F1F5F9;
-    --neutral-border: #E2E8F0;
-    --neutral-text: #0F172A;
-    --neutral-secondary: #475569;
-    --neutral-dark: #020617;
+    --color-white: #FFFFFF;
+    --color-off-white: #F8FAFC;
+    --color-light-gray: #F1F5F9;
+    --color-border: #E2E8F0;
+    --color-text: #0F172A;
+    --color-text-secondary: #475569;
+    --color-text-dark: #020617;
+
+    /* Font families */
+    --font-geist-sans: 'GeistSans', system-ui, sans-serif;
+    --font-geist-mono: 'GeistMono', monospace;
+
+    /* Spacing */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    --spacing-2xl: 48px;
+    --spacing-3xl: 64px;
+    --spacing-4xl: 96px;
+    --spacing-5xl: 128px;
+
+    /* Border radius */
+    --radius-sm: 8px;
+    --radius-md: 16px;
+    --radius-lg: 24px;
+
+    /* Shadows */
+    --shadow-card: 0 8px 30px rgba(7, 26, 51, 0.08);
+    --shadow-card-hover: 0 12px 40px rgba(7, 26, 51, 0.12);
   }
 
   * {
@@ -41,16 +65,16 @@
   }
 
   body {
-    @apply bg-neutral-white text-neutral-text font-sans;
+    @apply bg-neutral-white text-neutral font-sans;
   }
 
   ::selection {
-    @apply bg-sky-primary/30 text-navy-primary;
+    @apply bg-sky/30 text-navy;
   }
 
   /* Focus visible styles for accessibility */
   :focus-visible {
-    @apply outline-2 outline-offset-2 outline-sky-primary;
+    @apply outline-2 outline-offset-2 outline-sky;
   }
 
   /* Global reduced motion fallback */

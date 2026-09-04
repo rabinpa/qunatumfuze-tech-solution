@@ -2,7 +2,7 @@
 
 import { useRef, useState, type ReactNode, type MouseEvent } from 'react';
 import { ArrowRight } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/cn';
 import { useReducedMotion } from '@/hooks/useReducedMotion';
 
 interface MagneticButtonProps {

@@ -1,9 +1,10 @@
-import { cn } from '@/lib/utils';
+import { cn } from '@/lib/cn';
 
 interface SectionHeadingProps {
   title: string;
   subtitle?: string;
   align?: 'left' | 'center';
+  showLine?: boolean;
   titleClassName?: string;
   subtitleClassName?: string;
   className?: string;
@@ -11,12 +12,14 @@ interface SectionHeadingProps {
 
 /**
  * Consistent section headline + optional subhead pattern.
- * Title uses Fraunces (display), subtitle uses Inter (body).
+ * Title uses display font, subtitle uses body font.
+ * Optional decorative line on left or center.
  */
 export function SectionHeading({
   title,
   subtitle,
   align = 'center',
+  showLine = true,
   titleClassName,
   subtitleClassName,
   className,
@@ -29,9 +32,17 @@ export function SectionHeading({
         className
       )}
     >
+      {showLine && (
+        <div
+          className={cn(
+            'w-12 h-1 bg-gradient-to-r from-sky to-green rounded-full mb-4',
+            align === 'center' && 'mx-auto'
+          )}
+        />
+      )}
       <h2
         className={cn(
-          'font-display text-h2 text-navy-primary text-balance',
+          'font-display text-h2 text-navy text-balance',
           titleClassName
         )}
       >
