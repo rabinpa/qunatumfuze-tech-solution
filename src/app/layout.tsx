@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { geistSans, geistMono } from '@/lib/fonts';
+import { PageShell } from '@/components/layout/PageShell';
 import '@/styles/globals.css';
 
 export const metadata: Metadata = {
@@ -51,7 +52,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
-      <body className="min-h-screen antialiased">{children}</body>
+      <body className="min-h-screen antialiased">
+        <PageShell>{children}</PageShell>
+      </body>
     </html>
   );
 }
