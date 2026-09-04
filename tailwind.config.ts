@@ -81,6 +81,7 @@ export default {
         'gradient-reveal': 'gradientReveal 0.4s ease-out forwards',
         float: 'float 6s ease-in-out infinite',
         'glow-pulse': 'glowPulse 3s ease-in-out infinite',
+        'spin-slow': 'spin-slow 20s linear infinite',
       },
       keyframes: {
         'fade-in': {
@@ -106,6 +107,10 @@ export default {
         glowPulse: {
           '0%, 100%': { opacity: '0.6', filter: 'blur(20px)' },
           '50%': { opacity: '1', filter: 'blur(30px)' },
+        },
+        'spin-slow': {
+          from: { transform: 'rotate(0deg)' },
+          to: { transform: 'rotate(360deg)' },
         },
       },
     },

@@ -1,0 +1,9 @@
+export { Hero } from './Hero';
+export { CapabilitySection } from './CapabilitySection';
+export { SolutionsSection } from './SolutionsSection';
+export { HowWeThink } from './HowWeThink';
+export { FeaturedWork } from './FeaturedWork';
+export { TechnologyEcosystem } from './TechnologyEcosystem';
+export { ProcessSection } from './ProcessSection';
+export { AboutSection } from './AboutSection';
+export { FinalCTA } from './FinalCTA';

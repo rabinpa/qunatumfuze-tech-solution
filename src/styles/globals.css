@@ -119,5 +119,13 @@
       transition: none !important;
     }
   }
+
+  .gradient-navy-sky {
+    @apply bg-gradient-to-br from-navy via-navy-surface to-sky-bright/20;
+  }
+
+  .gradient-premium {
+    @apply bg-gradient-to-br from-navy-deep via-navy to-sky-bright/20;
+  }
 }
 
