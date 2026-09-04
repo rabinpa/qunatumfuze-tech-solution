@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { SectionHeading } from '@/components/ui/SectionHeading';
-import { processSteps } from '@/data/process';
+import { processStages } from '@/data/process';
 import { Lightbulb, Target, PenTool as PenToolIcon, Code, TrendingUp } from 'lucide-react';
 
 const iconMap: Record<string, React.ComponentType<{ size?: number; strokeWidth?: number }>> = {
@@ -23,7 +23,7 @@ export function ProcessSection() {
         <SectionHeading title="A better way to build." className="mb-16" />
 
         <div className="grid md:grid-cols-5 gap-8">
-          {processSteps.map((step, index) => {
+          {processStages.map((step, index) => {
             // Use different icons based on step id
             const iconName = ['Lightbulb', 'Target', 'PenTool', 'Code', 'TrendingUp'][index] || 'Target';
             const Icon = iconMap[iconName];
@@ -40,13 +40,13 @@ export function ProcessSection() {
                   <div className="w-16 h-16 mx-auto rounded-full bg-neutral-white border-2 border-sky-soft flex items-center justify-center mb-4 text-sky-bright">
                     {Icon && <Icon size={24} strokeWidth={1.5} />}
                   </div>
-                  {index < processSteps.length - 1 && (
+                  {index < processStages.length - 1 && (
                     <div className="hidden md:block absolute top-8 left-[calc(50%+2rem)] w-[calc(100%-4rem)] h-0.5 bg-sky-soft" />
                   )}
                 </div>
-                <div className="text-xs text-sky-bright font-semibold mb-1">0{index + 1}</div>
+                <div className="text-xs text-sky-bright font-semibold mb-1">{step.number}</div>
                 <h3 className="text-base font-semibold text-navy mb-1">{step.title}</h3>
-                <p className="text-sm text-neutral-secondary">{step.objective}</p>
+                <p className="text-sm text-neutral-secondary">{step.description}</p>
               </motion.div>
             );
           })}
