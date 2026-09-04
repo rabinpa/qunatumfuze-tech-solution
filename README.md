@@ -240,3 +240,5 @@ See [docs/seo.md](docs/seo.md). The site includes:
 ## License
 
 All rights reserved. © QuantumFuze Tech Solutions.
+#   q u a n t u m f u z e - t e c h - s o l u t i o n  
+ 
