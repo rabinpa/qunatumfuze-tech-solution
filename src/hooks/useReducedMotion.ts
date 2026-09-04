@@ -17,8 +17,15 @@ export function useReducedMotion(): boolean {
       setPrefersReducedMotion(event.matches);
     };
 
-    mediaQuery.addEventListener('change', handler);
-    return () => mediaQuery.removeEventListener('change', handler);
+    // Modern API
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener('change', handler);
+      return () => mediaQuery.removeEventListener('change', handler);
+    }
+
+    // Deprecated API fallback (older browsers)
+    mediaQuery.addListener(handler);
+    return () => mediaQuery.removeListener(handler);
   }, []);
 
   return prefersReducedMotion;

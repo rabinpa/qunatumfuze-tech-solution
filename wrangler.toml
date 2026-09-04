@@ -12,3 +12,29 @@ command = "npm run cf:build"
 NEXT_PUBLIC_SITE_URL = "https://quantumfuze.com"
 
 # KV namespaces, D1, R2, etc. can be added here as needed
+
+# Production security headers
+[env.production]
+
+[env.production.vars]
+NEXT_PUBLIC_SITE_URL = "https://quantumfuze.com"
+
+[env.production.headers]
+pattern = "https://quantumfuze.com/*"
+headers = [
+  { key = "Strict-Transport-Security", value = "max-age=63072000; includeSubDomains; preload" },
+  { key = "X-Content-Type-Options", value = "nosniff" },
+  { key = "X-Frame-Options", value = "DENY" },
+  { key = "X-XSS-Protection", value = "1; mode=block" },
+  { key = "Referrer-Policy", value = "strict-origin-when-cross-origin" },
+  { key = "Permissions-Policy", value = "camera=(), microphone=(), geolocation=(), payment=()" },
+  { key = "Content-Security-Policy", value = "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https: https://api.resend.com wss:; frame-src https://challenges.cloudflare.com;" }
+]
+
+# Staging environment
+[env.staging.headers]
+pattern = "https://staging.quantumfuze.com/*"
+headers = [
+  { key = "X-Content-Type-Options", value = "nosniff" },
+  { key = "X-Frame-Options", value = "DENY" }
+]

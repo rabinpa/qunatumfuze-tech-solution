@@ -4,8 +4,16 @@ import { ServiceCard } from '@/components/services/ServiceCard';
 import { services } from '@/data/services';
 
 export const metadata = {
-  title: 'Services',
-  description: 'Explore our range of technology services designed to help your business grow.',
+  title: 'Our Services | QuantumFuze Tech Solutions',
+  description:
+    'AI & Automation, Software Development, Product Design, Business Solutions, and IT Consulting — all under one roof. Built to scale with your business.',
+  openGraph: {
+    title: 'Our Services | QuantumFuze Tech Solutions',
+    description:
+      'AI & Automation, Software Development, Product Design, Business Solutions, and IT Consulting — all under one roof.',
+    url: 'https://quantumfuze.com/services',
+    type: 'website',
+  },
 };
 
 export default function ServicesPage() {

@@ -5,9 +5,14 @@ import { processStages, processFAQs } from '@/data/process';
 import { ProcessStageItem, ProcessFAQs } from '@/components/process';
 
 export const metadata = {
-  title: 'Our Process',
-  description:
-    'A better way to build — discover, define, design, build, and improve with our proven 5-stage process.',
+  title: 'Our Process | QuantumFuze Tech Solutions',
+  description: 'A better way to build — discover, define, design, build, and improve with our proven 5-stage process.',
+  openGraph: {
+    title: 'Our Process | QuantumFuze Tech Solutions',
+    description: 'A proven 5-stage process for building digital solutions that deliver measurable results.',
+    url: 'https://quantumfuze.com/process',
+    type: 'website',
+  },
 };
 
 export default function ProcessPage() {

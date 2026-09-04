@@ -18,9 +18,12 @@ export const metadata: Metadata = {
     'product design',
     'business solutions',
     'IT consulting',
+    'digital transformation',
   ],
   authors: [{ name: 'QuantumFuze Tech Solutions' }],
   creator: 'QuantumFuze Tech Solutions',
+  publisher: 'QuantumFuze Tech Solutions',
+  category: 'Technology',
   openGraph: {
     type: 'website',
     locale: 'en_US',
@@ -28,21 +31,50 @@ export const metadata: Metadata = {
     title: 'QuantumFuze Tech Solutions | Technology that moves ideas forward',
     description:
       'QuantumFuze builds intelligent digital solutions that help organizations operate better, move faster, and create measurable impact.',
+    url: 'https://quantumfuze.com',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'QuantumFuze Tech Solutions',
     description:
       'QuantumFuze builds intelligent digital solutions that help organizations operate better, move faster, and create measurable impact.',
+    images: ['https://quantumfuze.com/og-image.jpg'],
   },
-  robots: {
+    robots: {
     index: true,
     follow: true,
     googleBot: {
       index: true,
       follow: true,
+      'max-snippet': -1,
+      'max-image-preview': 'large',
+      'max-video-preview': -1,
     },
   },
+  alternates: {
+    canonical: 'https://quantumfuze.com',
+  },
+};
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'QuantumFuze Tech Solutions',
+  description:
+    'QuantumFuze builds intelligent digital solutions that help organizations operate better, move faster, and create measurable impact.',
+  url: 'https://quantumfuze.com',
+  logo: 'https://quantumfuze.com/og-image.jpg',
+  contactPoint: {
+    '@type': 'ContactPoint',
+    email: 'hello@quantumfuze.com',
+    contactType: 'sales',
+    availableLanguage: ['English'],
+  },
+  sameAs: [
+    'https://twitter.com/quantumfuze',
+    'https://linkedin.com/company/quantumfuze',
+    'https://github.com/quantumfuze',
+  ],
 };
 
 export default function RootLayout({
@@ -52,6 +84,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable}`}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
+      </head>
       <body className="min-h-screen antialiased">
         <PageShell>{children}</PageShell>
       </body>

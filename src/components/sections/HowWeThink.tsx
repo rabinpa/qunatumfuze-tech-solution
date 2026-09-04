@@ -4,9 +4,10 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { SectionHeading } from '@/components/ui/SectionHeading';
 import { howWeThinkStages } from '@/data/howWeThink';
+import { useReducedMotion } from '@/hooks/useReducedMotion';
 import { Target, Search, Map, Palette, Code, TrendingUp } from 'lucide-react';
 
-const iconMap: Record<string, React.ComponentType<{ size?: number; strokeWidth?: number }>> = {
+const iconMap: Record<string, React.ComponentType<{ size?: number; strokeWidth?: number; className?: string }>> = {
   Target,
   Search,
   Map,
@@ -16,11 +17,17 @@ const iconMap: Record<string, React.ComponentType<{ size?: number; strokeWidth?:
 };
 
 /**
- * How We Think section with scroll-activated progress line.
+ * How We Think section with scroll-activated SVG connection line
+ * and pulsing active icons.
  */
 export function HowWeThink() {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(-1);
+  const reducedMotion = useReducedMotion();
+
+  const progress = activeIndex >= 0
+    ? ((activeIndex + 1) / howWeThinkStages.length) * 100
+    : 0;
 
   return (
     <section className="py-24 bg-neutral-white">
@@ -31,14 +38,45 @@ export function HowWeThink() {
         />
 
         <div ref={containerRef} className="relative max-w-3xl mx-auto">
-          {/* Vertical Line */}
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-neutral-lightgray">
-            <motion.div
-              className="w-full bg-gradient-to-b from-sky to-green origin-top"
-              style={{ height: `${Math.max(0, ((activeIndex + 1) / howWeThinkStages.length) * 100)}%` }}
-              transition={{ duration: 0.8 }}
+          {/* SVG Connection Line */}
+          <svg
+            className="absolute left-8 top-0 bottom-0"
+            width="6"
+            viewBox="0 0 6 600"
+            preserveAspectRatio="none"
+            aria-hidden="true"
+          >
+            <defs>
+              <linearGradient id="howWeThinkGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#38BDF8" />
+                <stop offset="100%" stopColor="#22C55E" />
+              </linearGradient>
+            </defs>
+            {/* Track (background) */}
+            <rect x="2" y="0" width="2" height="100%" fill="#E2E8F0" opacity="0.5" />
+            {/* Progress fill (Sky Blue → Green) */}
+            <rect
+              x="2"
+              y="0"
+              width="2"
+              height={`${Math.max(0.5, progress)}%`}
+              fill="url(#howWeThinkGradient)"
+              style={{ transition: 'height 0.8s cubic-bezier(0.22, 1, 0.36, 1)' }}
             />
-          </div>
+            {/* Glow behind the progress line */}
+            {!reducedMotion && (
+              <rect
+                x="0"
+                y="0"
+                width="6"
+                height={`${Math.max(0.5, progress)}%`}
+                fill="url(#howWeThinkGradient)"
+                opacity="0.25"
+                filter="blur(2px)"
+                style={{ transition: 'height 0.8s cubic-bezier(0.22, 1, 0.36, 1)' }}
+              />
+            )}
+          </svg>
 
           <div className="space-y-12">
             {howWeThinkStages.map((stage, index) => {
@@ -51,6 +89,7 @@ export function HowWeThink() {
                   stage={stage}
                   Icon={Icon}
                   isActive={isActive}
+                  reducedMotion={reducedMotion}
                   onActive={() => setActiveIndex(index)}
                 />
               );
@@ -64,12 +103,13 @@ export function HowWeThink() {
 
 interface StageItemProps {
   stage: { id: string; title: string; description: string; icon: string };
-  Icon: React.ComponentType<{ size?: number; strokeWidth?: number }> | undefined;
+  Icon: React.ComponentType<{ size?: number; strokeWidth?: number; className?: string }> | undefined;
   isActive: boolean;
+  reducedMotion: boolean;
   onActive: () => void;
 }
 
-function StageItem({ stage, Icon, isActive, onActive }: StageItemProps) {
+function StageItem({ stage, Icon, isActive, reducedMotion, onActive }: StageItemProps) {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { amount: 0.5, once: false });
 
@@ -81,16 +121,38 @@ function StageItem({ stage, Icon, isActive, onActive }: StageItemProps) {
 
   return (
     <div ref={ref} className="relative pl-20">
-      {/* Circle */}
-      <div className="absolute left-0 top-0 w-16 h-16 rounded-full bg-neutral-white border-2 border-neutral-lightgray flex items-center justify-center">
-        <div
-          className={`w-10 h-10 rounded-full flex items-center justify-center transition-colors ${
-            isActive ? 'bg-sky text-neutral-white' : 'bg-neutral-lightgray text-neutral-secondary'
-          }`}
+      {/* Circle with active pulse */}
+      <motion.div
+        className="absolute left-0 top-0 w-16 h-16 rounded-full flex items-center justify-center"
+        animate={{
+          borderColor: isActive ? '#38BDF8' : '#E2E8F0',
+          scale: isActive && !reducedMotion ? 1.05 : 1,
+        }}
+        transition={{ duration: 0.4 }}
+        style={{ borderWidth: 2 }}
+      >
+        <motion.div
+          className="w-12 h-12 rounded-full flex items-center justify-center"
+          animate={{
+            backgroundColor: isActive ? '#38BDF8' : '#F1F5F9',
+            scale: isActive && !reducedMotion ? [1, 1.08, 1] : 1,
+          }}
+          transition={{
+            backgroundColor: { duration: 0.4 },
+            scale: isActive && !reducedMotion
+              ? { duration: 2, repeat: Infinity, ease: 'easeInOut' }
+              : { duration: 0.3 },
+          }}
         >
-          {Icon && <Icon size={20} strokeWidth={1.5} />}
-        </div>
-      </div>
+          {Icon && (
+            <Icon
+              size={20}
+              strokeWidth={1.5}
+              className={isActive ? 'text-neutral-white' : 'text-neutral-secondary'}
+            />
+          )}
+        </motion.div>
+      </motion.div>
 
       <motion.div
         initial={{ opacity: 0, x: -10 }}

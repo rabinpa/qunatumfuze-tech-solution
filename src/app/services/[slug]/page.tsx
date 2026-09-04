@@ -3,14 +3,35 @@ import { getServiceBySlug } from '@/data/services';
 import { ServiceHero, ServiceCapabilities, ServiceFAQs } from '@/components/services';
 import { Container } from '@/components/ui/Container';
 import Link from 'next/link';
+import { Metadata } from 'next';
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
   const slugs = ['ai-automation', 'software-development', 'product-design', 'business-solutions', 'it-consulting'];
   return slugs.map((slug) => ({ slug }));
 }
 
 interface ServiceDetailPageProps {
   params: Promise<{ slug: string }>;
+}
+
+export async function generateMetadata({ params }: ServiceDetailPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const service = getServiceBySlug(slug);
+
+  if (!service) {
+    return { title: 'Service Not Found | QuantumFuze Tech Solutions' };
+  }
+
+  return {
+    title: `${service.title} | QuantumFuze Tech Solutions`,
+    description: service.description,
+    openGraph: {
+      title: `${service.title} | QuantumFuze Tech Solutions`,
+      description: service.description,
+      url: `https://quantumfuze.com/services/${service.slug}`,
+      type: 'website',
+    },
+  };
 }
 
 export default async function ServiceDetailPage({ params }: ServiceDetailPageProps) {
@@ -21,8 +42,35 @@ export default async function ServiceDetailPage({ params }: ServiceDetailPagePro
     notFound();
   }
 
+  const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: service.title,
+    description: service.description,
+    provider: {
+      '@type': 'Organization',
+      name: 'QuantumFuze Tech Solutions',
+      url: 'https://quantumfuze.com',
+    },
+    serviceType: service.title,
+    offers: {
+      '@type': 'Offer',
+      priceSpecification: {
+        '@type': 'PriceSpecification',
+        priceCurrency: 'USD',
+        price: 'Custom',
+      },
+    },
+  };
+
   return (
     <main>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(serviceSchema),
+        }}
+      />
       <ServiceHero service={service} />
 
       {/* Problem Section */}

@@ -2,8 +2,14 @@ import { Container } from '@/components/ui/Container';
 import { ContactForm } from './ContactForm';
 
 export const metadata = {
-  title: 'Contact',
-  description: 'Get in touch with QuantumFuze to discuss your next project.',
+  title: 'Contact Us | QuantumFuze Tech Solutions',
+  description: 'Get in touch with QuantumFuze to discuss your next project. We build websites, run marketing campaigns, and ship mobile apps.',
+  openGraph: {
+    title: 'Contact Us | QuantumFuze Tech Solutions',
+    description: 'Ready to start your project? Get in touch with our team today.',
+    url: 'https://quantumfuze.com/contact',
+    type: 'website',
+  },
 };
 
 export default function ContactPage() {

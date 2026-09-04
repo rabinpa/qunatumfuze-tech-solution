@@ -5,8 +5,14 @@ import { companyStory, values, workingPrinciples } from '@/data/about';
 import { ValueCard, PrincipleCard } from '@/components/about';
 
 export const metadata = {
-  title: 'About Us',
-  description: 'Learn about QuantumFuze Tech Solutions — your growth partner for everything digital.',
+  title: 'About Us | QuantumFuze Tech Solutions',
+  description: 'Learn about QuantumFuze Tech Solutions — your growth partner for everything digital. One team, one mission.',
+  openGraph: {
+    title: 'About Us | QuantumFuze Tech Solutions',
+    description: 'Your growth partner for everything digital. One team, one mission.',
+    url: 'https://quantumfuze.com/about',
+    type: 'website',
+  },
 };
 
 export default function AboutPage() {

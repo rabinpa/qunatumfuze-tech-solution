@@ -4,8 +4,14 @@ import { ProjectCard } from '@/components/work/ProjectCard';
 import { projects } from '@/data/projects';
 
 export const metadata = {
-  title: 'Our Work',
+  title: 'Our Work | QuantumFuze Tech Solutions',
   description: "See how we've helped businesses transform their digital presence and achieve real results.",
+  openGraph: {
+    title: 'Our Work | QuantumFuze Tech Solutions',
+    description: "See how we've helped businesses transform their digital presence and achieve real results.",
+    url: 'https://quantumfuze.com/work',
+    type: 'website',
+  },
 };
 
 export default function WorkPage() {

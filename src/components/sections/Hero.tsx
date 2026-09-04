@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { LogoShowcase } from '@/components/animations/LogoShowcase';
+import { HeroNodes } from '@/components/animations/HeroNodes';
 
 /**
  * Hero section with animated background, headline, and CTAs.
@@ -10,6 +11,9 @@ import { LogoShowcase } from '@/components/animations/LogoShowcase';
 export function Hero() {
   return (
     <section className="relative min-h-screen flex items-center overflow-hidden bg-gradient-to-br from-navy via-navy-surface to-navy-deep">
+      {/* Ambient Floating Nodes */}
+      <HeroNodes />
+
       {/* Background Grid */}
       <div className="absolute inset-0 opacity-10">
         <div
