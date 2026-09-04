@@ -1,0 +1,14 @@
+name = "quantumfuze-tech-solutions"
+compatibility_date = "2024-12-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Cloudflare Pages configuration
+# For OpenNext deployment
+[build]
+command = "npm run cf:build"
+
+# Environment variables (use `wrangler secret put` for production secrets)
+[vars]
+NEXT_PUBLIC_SITE_URL = "https://quantumfuze.com"
+
+# KV namespaces, D1, R2, etc. can be added here as needed
